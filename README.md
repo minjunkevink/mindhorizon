@@ -17,7 +17,7 @@ We are using a Student Performance dataset, which contains 10,000 records with t
 
 The target variable, Performance Index, ranges from 10 to 100 and represents a measure of academic performance.
 
-Project Structure
+### Project Structure
 ```
 mindhorizon/
     data/
@@ -40,3 +40,18 @@ mindhorizon/
     README.md
 ```
 
+### Preprocess/Train/Evaluation (Important Points to Note)
+
+*Preprocessing*:
+- Used one hot encoding to convert 'yes' and 'no' to 1s and 0s
+- Split the train-test ratio as 80-20
+
+*Training*:
+- Used a simple linear regression model (TODO: try other architectures)
+- Saved the model as a `.joblib` under `models/`
+
+*Evaluation*:
+- LRmodels shows:
+    - `MSE: 4.0826283985, R^2 score: 0.9889832909573145`
+    - With our data range being [10,100] MSE is sufficiently small
+    - Our model explains 98% of the variance in our target which is very sufficient
