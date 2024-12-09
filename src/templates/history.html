@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head><title>History</title></head>
+<body>
+<h1>Your Metrics History</h1>
+<table border="1">
+  <tr>
+    <th>Hours Studied</th>
+    <th>Previous Scores</th>
+    <th>Sleep Hours</th>
+    <th>Sample Questions</th>
+    <th>Extracurricular</th>
+    <th>Timestamp</th>
+  </tr>
+  {% for row in metrics %}
+  <tr>
+    <td>{{ row[0] }}</td>
+    <td>{{ row[1] }}</td>
+    <td>{{ row[2] }}</td>
+    <td>{{ row[3] }}</td>
+    <td>{{ row[4] }}</td>
+    <td>{{ row[5] }}</td>
+  </tr>
+  {% endfor %}
+</table>
+<a href="{{ url_for('dashboard') }}">Back to Dashboard</a> |
+<a href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html>

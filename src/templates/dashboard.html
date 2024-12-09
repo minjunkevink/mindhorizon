@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head><title>Dashboard</title></head>
+<body>
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% for category, message in messages %}
+    <p style="color:red;">{{ message }}</p>
+  {% endfor %}
+{% endwith %}
+
+<h1>Enter your metrics</h1>
+<form method="post">
+  Hours Studied: <input type="text" name="hours"><br>
+  Previous Scores: <input type="text" name="prev_scores"><br>
+  Sleep Hours: <input type="text" name="sleep"><br>
+  Sample Questions Practiced: <input type="text" name="sample_qs"><br>
+  Extracurricular Activities (1=Yes,0=No): <input type="text" name="extra"><br>
+  <input type="submit" value="Submit">
+</form>
+
+{% if predicted is not none %}
+  <h2>Predicted Performance Index: {{ predicted }}</h2>
+{% endif %}
+<a href="{{ url_for('history') }}">View History</a> |
+<a href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html>

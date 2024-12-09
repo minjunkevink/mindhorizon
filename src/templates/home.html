@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head><title>Home</title></head>
+<body>
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% for category, message in messages %}
+    <p style="color:red;">{{ message }}</p>
+  {% endfor %}
+{% endwith %}
+
+{% if logged_in %}
+  <h1>Welcome, {{ username }}!</h1>
+  <a href="{{ url_for('dashboard') }}">Go to Dashboard</a> |
+  <a href="{{ url_for('history') }}">View History</a> |
+  <a href="{{ url_for('logout') }}">Logout</a>
+{% else %}
+  <h1>Please Log In</h1>
+  <form method="post" action="{{ url_for('login') }}">
+    <label>Username:</label><input name="username" type="text"><br>
+    <label>Password:</label><input name="password" type="password"><br>
+    <input type="submit" value="Login">
+  </form>
+{% endif %}
+<img src="data:image/png;base64,{{ plot_data }}" alt="Dataset Plot">
+</body>
+</html>
