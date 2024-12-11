@@ -93,6 +93,17 @@ def get_user_metrics(user_id):
     conn.close()
     return rows
 
+def get_all_metrics():
+    conn = sqlite3.connect(DB_PATH)
+    cur = conn.cursor()
+    cur.execute("""
+        SELECT hours_studied, previous_scores, sleep_hours, sample_questions, extracurricular
+        FROM Metrics
+    """)
+    rows = cur.fetchall()
+    conn.close()
+    return rows
+
 if __name__ == "__main__":
     # Running this file directly will initialize the DB if not done
     init_db()
