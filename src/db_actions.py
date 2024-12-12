@@ -1,7 +1,6 @@
 import sqlite3
 import os
 
-# Adjust the DB_PATH based on your directory structure
 DB_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "mindhorizon.db")
 
 def init_db():
@@ -9,7 +8,7 @@ def init_db():
     conn = sqlite3.connect(DB_PATH)
     cur = conn.cursor()
     
-    # Create Users table if not exists
+    # create Users table if not exists
     cur.execute("""
     CREATE TABLE IF NOT EXISTS Users (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -18,7 +17,7 @@ def init_db():
     );
     """)
     
-    # Create Metrics table if not exists
+    # create Metrics table if not exists
     cur.execute("""
     CREATE TABLE IF NOT EXISTS Metrics (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -45,7 +44,6 @@ def create_user(username, password):
         conn.commit()
         return True
     except sqlite3.IntegrityError:
-        # This occurs if the username already exists
         return False
     finally:
         conn.close()
@@ -105,6 +103,5 @@ def get_all_metrics():
     return rows
 
 if __name__ == "__main__":
-    # Running this file directly will initialize the DB if not done
     init_db()
     print("Database initialized.")

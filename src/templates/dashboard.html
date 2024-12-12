@@ -18,10 +18,15 @@
   <input type="submit" value="Submit">
 </form>
 
+<form action="{{ url_for('generate_user_projection') }}" method="POST">
+  <button type="submit">Show My Projection</button>
+</form>
+
 {% if predicted is not none %}
   <h2>Predicted Performance Index: {{ predicted }}</h2>
 {% endif %}
 <a href="{{ url_for('history') }}">View History</a> |
 <a href="{{ url_for('logout') }}">Logout</a>
+
 </body>
 </html>

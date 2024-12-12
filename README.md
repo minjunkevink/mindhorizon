@@ -30,9 +30,15 @@ mindhorizon/
             y_test_processed.csv
     src/
         app.py
+        db_actions.py
     models/
         model.joblib
         (will potential add additional models to test different architectures)
+    templates/
+        dashboard.html
+        history.html
+        home.html
+        user_projection.html
     scripts/
         preprocessing.py
         train.py
@@ -55,3 +61,25 @@ mindhorizon/
     - `MSE: 4.0826283985, R^2 score: 0.9889832909573145`
     - With our data range being [10,100] MSE is sufficiently small
     - Our model explains 98% of the variance in our target which is very sufficient
+
+### Functionality
+
+MindHorizon offers the following key features:
+
+*   **User Authentication:** Secure user accounts with login and logout functionality.
+*   **Performance Prediction:** Predicts student performance based on user-provided metrics.
+*   **Personalized Projections:** Generates personalized performance projections for the upcoming week based on user input and historical data.
+*   **Data Visualization:**
+    *   Visualizes the distribution of the original dataset's performance index, along with the normal average and projected average performance of all users.
+    *   Provides a visualization of a user's projected performance over the next 7 days, showing potential improvement with consistent effort.
+*   **Historical Data Tracking:** Allows users to view their historical performance metrics.
+
+### Usage
+
+1.  **Register or Login:** Create an account or log in with your existing credentials.
+2.  **Dashboard:** After logging in, you'll be redirected to the dashboard where you can:
+    *   Enter your study metrics (hours studied, previous scores, sleep hours, etc.).
+    *   View your predicted performance based on the entered metrics.
+3.  **Generate Projection:** Click the "Generate Projection" button to create a personalized performance projection for the next 7 days.
+4.  **View Projection:** The projection will be displayed on a separate page accessible through a personalized URL.
+5.  **History:** View your historical metrics data.
